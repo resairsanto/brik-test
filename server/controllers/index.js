@@ -1,9 +1,13 @@
+const { User, Product, Category } = require("../models")
+
 class Controller {
    static async register(req, res, next) {
       try {
-         console.log(req.body)
+         const { email, password } = req.body;
+         const user = await User.create({ email, password });
+         res.status(201).json({ id: user.id, email: user.email });
       } catch (error) {
-
+         console.log(error)
       }
    }
 
