@@ -30,7 +30,18 @@ function AddForm() {
    const handleSubmit = async (e) => {
       e.preventDefault()
       await dispatch(createProduct(form))
-      navigate("/")
+      setForm({
+         sku: "",
+         name: "",
+         CategoryId: "",
+         description: "",
+         weight: "",
+         width: "",
+         length: "",
+         height: "",
+         image: "",
+         price: ""
+      })
    }
 
    return (
