@@ -1,11 +1,14 @@
-import { useState } from 'react'
-import LoginPage from './pages/LoginForm'
+import NavBar from './components/NavBar'
+import TableProduct from './components/TableProduct'
+import SearchBarItem from './components/SearchBar'
 
 function App() {
 
   return (
     <>
-      <LoginPage />
+      <NavBar />
+      <SearchBarItem />
+      <TableProduct />
     </>
   )
 }
