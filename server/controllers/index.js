@@ -73,6 +73,9 @@ class Controller {
             {
                model: Category,
             }
+         ],
+         order: [
+            ['updatedAt', 'DESC']
          ]
       }
       let offset;
@@ -99,7 +102,13 @@ class Controller {
    static async findProduct(req, res, next) {
       try {
          const { id } = req.params
-         const product = await Product.findByPk(id)
+         const product = await Product.findByPk(id, {
+            include: [
+               {
+                  model: Category
+               }
+            ]
+         })
          res.status(201).json(product)
       } catch (error) {
          next(error)
