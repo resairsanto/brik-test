@@ -60,7 +60,6 @@ function TableProduct() {
                               <td>{el.description}</td>
                               <td>Rp. {el.price.toLocaleString()}</td>
                               <td>
-                                 {/* <button className="btn btn-success btn-sm m-1">Detail</button> */}
                                  <DetailProduct id={el.id} />
                                  <button className="btn btn-danger btn-sm m-1" onClick={() => handleDelete(el.id)}><i className="bi bi-trash"></i></button>
                                  <UpdateForm id={el.id} />

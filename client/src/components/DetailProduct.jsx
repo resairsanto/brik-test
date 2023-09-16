@@ -44,9 +44,6 @@ function DetailProduct({ id }) {
 
    return (
       <>
-         {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal3">
-            Detail
-         </button> */}
          <button className="btn btn-success btn-sm m-1" onClick={fetchDetail} data-bs-toggle="modal" data-bs-target="#exampleModal3">Detail</button>
 
          <div className="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
