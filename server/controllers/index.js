@@ -10,7 +10,7 @@ class Controller {
          const user = await User.create({ email, password });
          res.status(201).json({ id: user.id, email: user.email });
       } catch (error) {
-         console.log(error)
+         next(error)
       }
    }
 
@@ -30,21 +30,50 @@ class Controller {
          const access_token = signToken(payload);
          res.status(200).json({ access_token });
       } catch (error) {
-         console.log(error)
+         next(error)
       }
    }
 
    static async createProduct(req, res, next) {
       try {
-
+         const {
+            sku,
+            name,
+            CategoryId,
+            description,
+            weight,
+            width,
+            length,
+            height,
+            image,
+            price } = req.body
+         await Product.create({
+            sku,
+            name,
+            CategoryId,
+            description,
+            weight,
+            width,
+            length,
+            height,
+            image,
+            price
+         })
+         res.status(201).json({ message: "Product created!" })
       } catch (error) {
+         next(error)
       }
    }
 
    static async getAllProducts(req, res, next) {
       const { page, search } = req.query
       let querySQL = {
-         where: {}
+         where: {},
+         include: [
+            {
+               model: Category,
+            }
+         ]
       }
       let offset;
       let limit;
@@ -63,23 +92,60 @@ class Controller {
          let Products = await Product.findAndCountAll(querySQL);
          res.status(200).json(Products);
       } catch (error) {
-         console.log(error)
+         next(error)
+      }
+   }
+
+   static async findProduct(req, res, next) {
+      try {
+         const { id } = req.params
+         const product = await Product.findByPk(id)
+         res.status(201).json(product)
+      } catch (error) {
+         next(error)
       }
    }
 
    static async updateProduct(req, res, next) {
       try {
-
+         const { id } = req.params
+         const {
+            sku,
+            name,
+            CategoryId,
+            description,
+            weight,
+            width,
+            length,
+            height,
+            image,
+            price } = req.body
+         await Product.update({
+            sku,
+            name,
+            CategoryId,
+            description,
+            weight,
+            width,
+            length,
+            height,
+            image,
+            price
+         }, { where: { id } })
+         res.status(201).json({ message: "Product successfully updated" })
       } catch (error) {
-
+         next(error)
       }
    }
 
    static async deleteProduct(req, res, next) {
       try {
-
+         const { id } = req.params
+         const deletedProduct = await Product.destroy({ where: { id } })
+         if (deletedProduct === 0) throw { name: "NotFound" }
+         res.status(201).json({ message: "Product successfully deleted" })
       } catch (error) {
-
+         next(error)
       }
    }
 }

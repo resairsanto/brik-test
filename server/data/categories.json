@@ -1,22 +1,17 @@
 [
    {
-      "id": 1,
       "name": "Minuman"
    },
    {
-      "id": 2,
       "name": "Makanan"
    },
    {
-      "id": 3,
       "name": "Peralatan Dapur"
    },
    {
-      "id": 4,
       "name": "Perawatan Tubuh"
    },
    {
-      "id": 5,
       "name": "Alas Kaki"
    }
 ]
