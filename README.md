@@ -6,7 +6,8 @@ Navigate to the "server" folder and execute the following command:
 
 Ensure that the database credentials match your user database
 - In "server" folder, go to the "config" folder -> config.json
-- Adjust the "username" and "password" to match the user database you have
+- Adjust the "username", "password", to match the user database you have
+- Also edit the "dialect" if you don't use the postgresql
 
 Then follow the following command instructions:
 - npx sequelize db:create
@@ -32,3 +33,11 @@ To use the application, you can use the following credentials:
 - Password: 12345
 
 Alternatively, you can create a new user on register page.
+
+## In the application, you can do the following:
+
+- Add new products
+- Edit existing products
+- View details of a product
+- Delete products
+- Search for products using the search feature
